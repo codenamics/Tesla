@@ -1,0 +1,221 @@
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  list-style: none;
+}
+
+.grid-container {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: [nav-start]90px[nav-end] 1fr;
+  grid-template-columns:
+    [sidebar-start] 92px [sidebar-end full-start] minmax(6rem, 1fr)
+    [center-start] repeat(4, minmax(min-content, 14rem) [col-end])
+    [center-end] minmax(6rem, 1fr)
+    [full-end info] 300px[info-end];
+}
+
+.side-bar {
+  grid-row: 1/-1;
+  grid-column: sidebar-start/sidebar-end;
+  background: #f7f8fc;
+  box-shadow: 0 2px 16px 0 rgba(136, 145, 169, 0.15);
+  z-index: 100;
+}
+.logo {
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.side-bar ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 65px;
+}
+.side-bar ul li {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 25px 0;
+  width: 100%;
+}
+
+.side-bar ul li:hover:after {
+  content: "";
+  height: 30%;
+  width: 2px;
+  position: absolute;
+  right: 0;
+  top: 23px;
+  background: #646dbe;
+  box-shadow: 0 2px 13px 0 rgba(40, 84, 246, 0.62);
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  grid-row: nav-start/nav-end;
+  grid-column: full-start/full-end;
+  opacity: 0.8;
+  background: #d3d5ea;
+  align-items: center;
+  padding: 0 35px;
+}
+
+.nav-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 25px;
+}
+
+.nav-right div {
+  opacity: 0.85;
+  font-family: Helvetica;
+  font-size: 13px;
+  color: #525880;
+  letter-spacing: 0.23px;
+  line-height: 22.8px;
+  margin: 0 15px;
+}
+
+.weather {
+  font-family: Helvetica;
+  font-size: 13px;
+  color: #525880;
+  letter-spacing: 0.23px;
+  line-height: 22.8px;
+  font-weight: bold;
+}
+
+.dash {
+  font-family: Helvetica;
+  font-size: 18px;
+  color: #2f3667;
+  letter-spacing: 0.32px;
+  font-weight: 600;
+}
+
+.main {
+  grid-column: full-start/full-end;
+  display: grid;
+  grid-template-rows: repeat(3, min-content) 285px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 25px;
+  padding: 30px;
+  background: #ebecf8;
+}
+
+.info {
+  grid-row: 1/-1;
+  grid-column: info/info-end;
+  background-image: linear-gradient(120deg, #252649 0%, #080a1a 69%);
+}
+
+.alert {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  grid-row: 1/2;
+  padding: 25px 25px;
+  grid-column: 1/3;
+  background: #f98686;
+  box-shadow: 0 2px 42px 0 rgba(167, 168, 199, 0.02);
+  border-radius: 2px;
+}
+.alert-head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-family: Helvetica;
+  font-size: 15px;
+  color: #ffffff;
+  letter-spacing: 0.27px;
+  line-height: 26px;
+}
+.alert-head img {
+  margin-right: 8px;
+}
+.alert-btn {
+  background: #ffffff;
+  border-radius: 2px;
+  font-family: Helvetica;
+  font-size: 14px;
+  color: #2f3667;
+  letter-spacing: 0.25px;
+  text-align: center;
+  line-height: 26px;
+  width: 82px;
+  height: 36px;
+}
+.alert-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Helvetica;
+  font-size: 14px;
+  color: #ffffff;
+  letter-spacing: 0.25px;
+  line-height: 24px;
+}
+
+.chart {
+  height: 400px;
+  grid-column: 1/3;
+  grid-row: 2/4;
+  background: #080a1a;
+}
+
+.tesla {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 40px;
+  grid-row: 1/4;
+  grid-column: 3/-1;
+  background: #f8f8fb;
+  box-shadow: 0 2px 31px 0 rgba(167, 168, 199, 0.02);
+  border-radius: 2px;
+}
+
+.energy,
+.fluid,
+.range,
+.tire {
+  grid-row: 4/-1;
+  background: #f8f8fb;
+  box-shadow: 0 2px 31px 0 rgba(167, 168, 199, 0.02);
+  border-radius: 2px;
+}
+
+.energy {
+  grid-column: 1/2;
+}
+
+.fluid {
+  grid-column: 2/3;
+}
+
+.range {
+  grid-column: 3/4;
+}
+
+.tire {
+  grid-column: 4/-1;
+}
