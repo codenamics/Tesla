@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,10 +15,10 @@
         <div class="side-bar">
             <div class="logo"><img src="assets/T.svg" alt=""></div>
             <ul>
-                <li><img src="assets/Fill 1.png" alt=""></li>
-                <li><img src="assets/Fill 2.png" alt=""></li>
-                <li><img src="assets/Group 5.png" alt=""></li>
-                <li><img src="assets/Group 3.png" alt=""></li>
+                <li><img src="assets/Fill 1.svg" alt=""></li>
+                <li><img src="assets/Fill 2.svg" alt=""></li>
+                <li><img src="assets/Group 5.svg" alt=""></li>
+                <li><img src="assets/Group 3.svg" alt=""></li>
             </ul>
         </div>
         <div class="nav">
@@ -44,7 +45,17 @@
             <div class="tesla">
                 <div> <img src="assets/tesla3.png" alt=""></div>
             </div>
-            <div class="chart">dsfsd</div>
+            <div class="chart">
+                <div class="chart-head">
+                    <div>Power consumption (kWh/100km)</div>
+                    <div class="chart-date">
+                        <div class="chart-date-week">Week</div>
+                        <div>Month</div>
+                    </div>
+                </div>
+                <canvas id="chart"></canvas>
+
+            </div>
             <div class="energy">dsfsd</div>
             <div class="range">dsfsd</div>
             <div class="fluid">dsfsd</div>
@@ -60,7 +71,168 @@
     </div>
 
 
+    <script>
+        var ctx = document.getElementById('chart').getContext("2d");
 
+        var gradientStroke = ctx.createLinearGradient(1000, 1200, 1000, 0);
+        gradientStroke.addColorStop(1, "#fff");
+        gradientStroke.addColorStop(0.25, "#fff");
+        gradientStroke.addColorStop(0.5, "#ffa9a9f2");
+        gradientStroke.addColorStop(0, "#fff");
+        var data = {
+            legend: false,
+            labels: ["Mon", "Tue", "Wed", "Thu", "Friday", "Sat", "Sun",],
+            datasets: [{
+                fill: true,
+                backgroundColor: gradientStroke,
+                borderColor: '#F98686',
+                borderWidth: 2,
+                data: [340, 190, 250, 420, 300, 1000, 300],
+                pointBorderWidth: 9,
+                pointRadius: 9,
+                pointBorderColor: 'transparent',
+                pointHoverRadius: 4,
+                pointHoverBorderWidth: 3,
+                pointHoverBackgroundColor: '#F98686',
+                pointHoverBorderColor: '#F98686',
+                pointBackgroundColor: 'transparent'
+
+
+            }]
+        };
+        var options = {
+            hover: {
+                mode: 'index',
+                intersect: false
+            },
+            tooltips: {
+                backgroundColor: '#FFF',
+                bodyFontColor: '#393f5b',
+                bodyFontSize: 20,
+                displayColors: false,
+                bodySpacing: 10,
+                intersect: false,
+                bodyFontStyle: 'bold',
+                xPadding: 15,
+                yPadding: 15,
+                mode: 'index',
+                callbacks: {
+                    title: function () {}
+                }
+            },
+            legend: {
+                display: false
+            },
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: "#6e6e6e26",
+                        padding: 0,
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 1200,
+                        stepSize: 300,
+                        display: true
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false,
+                        color: "#6e6e6e26",
+
+                    },
+                    ticks: {
+                        fontSize: 14,
+                        fontColor: '#afb6d4',
+                    }
+                }]
+            }
+        };
+
+        let draw = Chart.controllers.line.prototype.draw;
+        Chart.controllers.line.prototype.draw = function () {
+            draw.apply(this, arguments);
+            let ctx = this.chart.chart.ctx;
+            let _stroke = ctx.stroke;
+            ctx.stroke = function () {
+                ctx.save();
+                ctx.shadowColor = '#fb9898';
+                ctx.shadowBlur = 8;
+                ctx.shadowOffsetX = 2;
+                ctx.shadowOffsetY = 40;
+                _stroke.apply(this, arguments);
+                ctx.restore();
+            }
+        };
+        Chart.defaults.LineWithLine = Chart.defaults.line;
+        Chart.controllers.LineWithLine = Chart.controllers.line.extend({
+            draw: function (ease) {
+                if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
+                    var activePoint = this.chart.tooltip._active[0],
+                        ctx = this.chart.ctx,
+                        x = activePoint.tooltipPosition().x,
+                        topY = this.chart.scales['y-axis-0'].top,
+                        bottomY = this.chart.scales['y-axis-0'].bottom;
+
+                    // draw line
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.moveTo(x, topY);
+                    ctx.lineTo(x, bottomY);
+                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = '#6e6e6e26';
+                    ctx.shadowBlur = 1;
+                    ctx.stroke();
+                    ctx.restore();
+                }
+                Chart.controllers.line.prototype.draw.call(this, ease);
+            }
+        });
+        var chart = new Chart(ctx, {
+            type: 'LineWithLine',
+            data: data,
+            options: options
+        });
+
+        var config = {
+            type: 'doughnut',
+            data: {
+
+                datasets: [{
+                    data: [
+                        200,
+                        200,
+                        300,
+                        400
+                    ],
+                    backgroundColor: [
+                        "#922c88",
+                        "#7ed321",
+                        "#7abec5",
+                        "#ff3270"
+
+                    ],
+                }]
+
+            },
+            options: {
+                responsive: true,
+                cutoutPercentage: 95
+
+            }
+        };
+
+
+        window.onload = function () {
+            var ctx = document.getElementById("donut").getContext("2d");
+            window.myPie = new Chart(ctx, config);
+        };
+    </script>
 
 </body>
 

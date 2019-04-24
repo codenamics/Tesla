@@ -162,6 +162,7 @@ ul li {
   line-height: 26px;
   width: 82px;
   height: 36px;
+  border: none;
 }
 .alert-bottom {
   display: flex;
@@ -176,12 +177,31 @@ ul li {
 }
 
 .chart {
-  height: 400px;
+  padding: 25px;
   grid-column: 1/3;
   grid-row: 2/4;
-  background: #080a1a;
+  background: #f8f8fb;
 }
-
+.chart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Helvetica;
+  font-size: 15px;
+  color: #2f3667;
+  letter-spacing: 0.27px;
+  line-height: 26px;
+  margin-bottom: 25px;
+}
+.chart-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chart-date-week {
+  margin-right: 20px;
+  font-weight: bold;
+}
 .tesla {
   display: flex;
   align-items: center;
