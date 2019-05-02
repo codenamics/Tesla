@@ -10,7 +10,7 @@ $grid-box-background: #f8f8fb;
 $nav-font-color: #525880;
 $dash-font-color: #2f3667;
 $car-info-font-color: #c8cefc;
-$car-info-font-color-alt:#bdc4f7;
+$car-info-font-color-alt: #bdc4f7;
 $change-location-font: #e67171;
 //Shadows
 $side-bar-box-shadow: 0 2px 16px 0 rgba(136, 145, 169, 0.15);
@@ -37,7 +37,10 @@ ul li {
   display: grid;
   grid-template-rows: [nav-start]90px[nav-end] 1fr;
   grid-template-columns:
-    [sidebar-start] 92px [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(4, minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end info] 300px[info-end];
+    [sidebar-start] 92px [sidebar-end full-start] minmax(6rem, 1fr)
+    [center-start] repeat(4, minmax(min-content, 14rem) [col-end])
+    [center-end] minmax(6rem, 1fr)
+    [full-end info] 300px[info-end];
 }
 
 .side__bar {
@@ -83,14 +86,6 @@ ul li {
     }
   }
 }
-
-
-
-
-
-
-
-
 
 .nav__bar {
   display: flex;
@@ -139,6 +134,7 @@ ul li {
 }
 
 .main {
+  grid: [nav-end]/-1;
   grid-column: full-start/full-end;
   display: grid;
   grid-template-rows: repeat(3, min-content) 285px;
@@ -146,6 +142,11 @@ ul li {
   grid-gap: 25px;
   padding: 30px;
   background: $main-background;
+}
+@media (min-width: 1600px) {
+  .main {
+    grid-template-rows: repeat(3, min-content) 500px;
+  }
 }
 
 .info {

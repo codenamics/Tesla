@@ -159,6 +159,7 @@ ul li {
 }
 
 .main {
+  grid: [nav-end]/-1;
   grid-column: full-start/full-end;
   display: -ms-grid;
   display: grid;
@@ -170,6 +171,14 @@ ul li {
   grid-gap: 25px;
   padding: 30px;
   background: #ebecf8;
+}
+
+@media (min-width: 1600px) {
+  .main {
+    -ms-grid-rows: (min-content)[3] 500px;
+        grid-template-rows: repeat(3, -webkit-min-content) 500px;
+        grid-template-rows: repeat(3, min-content) 500px;
+  }
 }
 
 .info {
