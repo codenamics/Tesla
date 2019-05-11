@@ -37,10 +37,7 @@ ul li {
   display: grid;
   grid-template-rows: [nav-start]90px[nav-end] 1fr;
   grid-template-columns:
-    [sidebar-start] 92px [sidebar-end full-start] minmax(6rem, 1fr)
-    [center-start] repeat(4, minmax(min-content, 14rem) [col-end])
-    [center-end] minmax(6rem, 1fr)
-    [full-end info] 300px[info-end];
+    [sidebar-start] 92px [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(4, minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end info] 300px[info-end];
 }
 
 .side__bar {
@@ -143,6 +140,7 @@ ul li {
   padding: 30px;
   background: $main-background;
 }
+
 @media (min-width: 1600px) {
   .main {
     grid-template-rows: repeat(3, min-content) 500px;
@@ -332,15 +330,28 @@ ul li {
 }
 
 .tesla {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 70px 40px;
+
+
+  padding: 30px 25px;
   grid-row: 1/4;
   grid-column: 3/-1;
   background: $grid-box-background;
   box-shadow: 0 2px 31px 0 rgba(167, 168, 199, 0.02);
   border-radius: 2px;
+
+  &-top {
+    display: flex;
+    justify-content: space-between;
+
+    &-left {
+      font-family: Helvetica;
+      font-size: 15px;
+      color: #2F3667;
+      letter-spacing: 0.27px;
+      text-align: center;
+      line-height: 26px;
+    }
+  }
 }
 
 .energy,
@@ -441,4 +452,191 @@ ul li {
   color: #2f3667;
   letter-spacing: 0.27px;
   text-align: center;
+}
+
+.lock-all {
+  display: flex;
+  flex-direction: row;
+  font-family: Helvetica;
+  font-size: 14px;
+  color: #525880;
+  letter-spacing: 0.25px;
+  align-items: center;
+}
+
+.onoffswitch {
+  margin-left: 15px;
+  position: relative;
+  width: 48px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+  display: none;
+}
+
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #EEEEEE;
+  border-radius: 50px;
+}
+
+.onoffswitch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 25px;
+  padding: 0;
+  line-height: 25px;
+  font-size: 14px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+  content: "";
+  padding-left: 10px;
+  background-color: #EEEEEE;
+  color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+  content: "";
+  padding-right: 10px;
+  background-color: #EEEEEE;
+  color: #999999;
+  text-align: right;
+}
+
+.onoffswitch-switch {
+  display: block;
+  width: 20px;
+  margin: 2.5px;
+  background: #4D4D4D;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 19px;
+  border: 2px solid #EEEEEE;
+  border-radius: 50px;
+  transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
+  right: 0px;
+  background-color: $alert-background;
+}
+
+.tesla-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.tesla-img {
+
+  height: 300px;
+  position: relative;
+
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.t {
+
+  position: absolute;
+  height: 116px;
+  width: 99px
+}
+
+.right {
+  float: left;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+
+  &-check {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #F4E6ED;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+
+  }
+
+  &-line {
+    width: 1px;
+    height: 90px;
+    background: #E8706F;
+  }
+}
+
+.left {
+
+
+  &-top {
+    font-family: Helvetica;
+    font-size: 11px;
+    color: #525880;
+    letter-spacing: 0;
+    line-height: 15px;
+  }
+
+  &-lock {
+    background: #5B63AF;
+    border-radius: 2px;
+    font-family: Helvetica;
+    font-size: 10px;
+    color: #FFFFFF;
+    letter-spacing: -0.2px;
+    line-height: 14px;
+    border: none;
+  }
+}
+
+.tesla-img-top-1 {
+  top: 8px;
+  left: 25px;
+}
+
+.tesla-img-top-2 {
+  top: -21px;
+  left: 161px;
+}
+
+.tesla-img-top-3 {
+  top: 30px;
+  left: 329px;
 }

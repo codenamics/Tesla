@@ -419,16 +419,7 @@ ul li {
 }
 
 .tesla {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 70px 40px;
+  padding: 30px 25px;
   -ms-grid-row: 1;
   -ms-grid-row-span: 3;
   grid-row: 1/4;
@@ -437,6 +428,24 @@ ul li {
   -webkit-box-shadow: 0 2px 31px 0 rgba(167, 168, 199, 0.02);
           box-shadow: 0 2px 31px 0 rgba(167, 168, 199, 0.02);
   border-radius: 2px;
+}
+
+.tesla-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.tesla-top-left {
+  font-family: Helvetica;
+  font-size: 15px;
+  color: #2F3667;
+  letter-spacing: 0.27px;
+  text-align: center;
+  line-height: 26px;
 }
 
 .energy,
@@ -557,5 +566,218 @@ ul li {
   color: #2f3667;
   letter-spacing: 0.27px;
   text-align: center;
+}
+
+.lock-all {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-family: Helvetica;
+  font-size: 14px;
+  color: #525880;
+  letter-spacing: 0.25px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.onoffswitch {
+  margin-left: 15px;
+  position: relative;
+  width: 48px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+  display: none;
+}
+
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #EEEEEE;
+  border-radius: 50px;
+}
+
+.onoffswitch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  -webkit-transition: margin 0.3s ease-in 0s;
+  transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 25px;
+  padding: 0;
+  line-height: 25px;
+  font-size: 14px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+  content: "";
+  padding-left: 10px;
+  background-color: #EEEEEE;
+  color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+  content: "";
+  padding-right: 10px;
+  background-color: #EEEEEE;
+  color: #999999;
+  text-align: right;
+}
+
+.onoffswitch-switch {
+  display: block;
+  width: 20px;
+  margin: 2.5px;
+  background: #4D4D4D;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 19px;
+  border: 2px solid #EEEEEE;
+  border-radius: 50px;
+  -webkit-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px;
+  background-color: #f98686;
+}
+
+.tesla-container {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tesla-img {
+  height: 300px;
+  position: relative;
+}
+
+.tesla-img img {
+  height: auto;
+  width: 100%;
+}
+
+.t {
+  position: absolute;
+  height: 116px;
+  width: 99px;
+}
+
+.right {
+  float: left;
+  margin-right: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.right-check {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #F4E6ED;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.right-line {
+  width: 1px;
+  height: 90px;
+  background: #E8706F;
+}
+
+.left-top {
+  font-family: Helvetica;
+  font-size: 11px;
+  color: #525880;
+  letter-spacing: 0;
+  line-height: 15px;
+}
+
+.left-lock {
+  background: #5B63AF;
+  border-radius: 2px;
+  font-family: Helvetica;
+  font-size: 10px;
+  color: #FFFFFF;
+  letter-spacing: -0.2px;
+  line-height: 14px;
+  border: none;
+}
+
+.tesla-img-top-1 {
+  top: 8px;
+  left: 25px;
+}
+
+.tesla-img-top-2 {
+  top: -21px;
+  left: 161px;
+}
+
+.tesla-img-top-3 {
+  top: 30px;
+  left: 329px;
 }
 /*# sourceMappingURL=style.css.map */
