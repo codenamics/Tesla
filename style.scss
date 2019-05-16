@@ -141,11 +141,14 @@ ul li {
   background: $main-background;
 }
 
-@media (min-width: 1600px) {
-  .main {
-    grid-template-rows: repeat(3, min-content) 500px;
-  }
-}
+
+
+
+
+
+
+
+
 
 .info {
   grid-row: 1/-1;
@@ -415,7 +418,7 @@ ul li {
   color: $white;
   position: absolute;
 
-  bottom: 29%;
+  bottom: 28%;
   padding-left: 7px;
   font-family: Helvetica;
   font-size: 16px;
@@ -639,4 +642,23 @@ ul li {
 .tesla-img-top-3 {
   top: 30px;
   left: 329px;
+}
+
+@media (min-width: 1600px) {
+  .main {
+    grid-template-rows: repeat(3, min-content) 500px;
+  }
+
+
+  .time-display {
+    color: #fff;
+    position: absolute;
+    bottom: 32%;
+    padding-left: 7px;
+    font-family: Helvetica;
+    font-size: 30px;
+    color: #646dbe;
+    letter-spacing: 0.29px;
+    line-height: 26px;
+  }
 }
